@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulate LED</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin-top: 50px;
+      }
+      h1 {
+        text-align: center;
+      }
+      button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+        color: white;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
+      }
+
+      .red {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .btn {
+        display: flex;
+      }
+      .on {
+        background: green;
+      }
+      .off {
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simulate ARDUINO LED</h1>
+    <div class="container">
+      <div class="red">
+        <h2>Red LED</h2>
+        <div class="btn">
+          <button id="redOn" class="on">ON</button>
+          <button id="redOff" class="off">OFF</button>
+        </div>
+      </div>
+      <div class="green">
+        <h2>Green LED</h2>
+        <button id="greenOn" class="on">ON</button>
+        <button id="greenOff" class="off">OFF</button>
+      </div>
+      <div class="yellow">
+        <h2>Yellow LED</h2>
+        <button id="yellowOn" class="on">ON</button>
+        <button id="yellowOff" class="off">OFF</button>
+      </div>
+      <div class="oscillate">
+        <h2>Oscillate</h2>
+
+        <button id="oscillateOn" class="on">ON</button>
+        <button id="oscillateOff" class="off">OFF</button>
+      </div>
+    </div>
+    <script>
+      document.getElementById("redOn").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "RLED_ON" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      document.getElementById("redOff").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "RLED_OFF" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      document.getElementById("greenOn").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "GLED_ON" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      document.getElementById("greenOff").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "GLED_OFF" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      document.getElementById("yellowOn").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "YLED_ON" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+      document.getElementById("yellowOff").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "YLED_OFF" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      document.getElementById("oscillateOn").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "OLED_ON" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+
+      document.getElementById("oscillateOff").addEventListener("click", () => {
+        fetch("http://localhost:3000/control", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ command: "OLED_OFF" }),
+        })
+          .then((response) => response.text())
+          .then((data) => alert(data))
+          .catch((error) => console.error("Error:", error));
+      });
+    </script>
+  </body>
+</html>
